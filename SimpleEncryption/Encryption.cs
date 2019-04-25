@@ -8,16 +8,23 @@ namespace SimpleEncryption
 
 		public static string Encryption(string x)
 		{
-			List<char> Letras = new List<char> {'a','A', 'b', 'B', 'c', 'C', 'd', 'D', 'e', 'E', 'f', 'F', 'g',
+			IList<char> Letras = new List<char> {'a', 'A', 'b', 'B', 'c', 'C', 'd', 'D', 'e', 'E', 'f', 'F', 'g',
 												'G', 'h', 'H', 'i', 'I', 'j', 'J', 'k', 'K', 'l', 'L', 'm', 'M',
-												'n', 'N', 'o', 'O', 'p', 'P', 'q', 'Q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z',
-												           
-												    'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z',
+												'n', 'N', 'o', 'O', 'p', 'P', 'q', 'Q', 'r', 'R', 's', 'S', 't',
+												'T', 'u', 'U', 'v', 'V', 'w', 'W', 'x', 'X', 'y', 'Y', 'z', 'Z',
 												'á', 'â', 'ã', 'à', 'é', 'ê', 'í', 'ó', 'õ', 'ô', 'ú', 'ü', 'ç',
 												'Á', 'Â', 'Ã', 'À', 'É', 'Ê', 'Í', 'Ó', 'Õ', 'Ô', 'Ú', 'Ü', 'Ç'};
 
+			IList<char> Symbols = new List<char>{ ',', '.', '[', ']', '{', '}' };
+
+			int Aleatorio()
+			{
+				Random z = new Random();
+				return z.Next(1, 10);
+			}
+
 			char[] message = x.ToCharArray();
-			string encrypted = "";
+			string encrypted = Aleatorio().ToString("00") + "-";
 
 			foreach (char letra in message)
 			{
@@ -25,28 +32,33 @@ namespace SimpleEncryption
 				{
 					encrypted += " ";
 				}
+				else if (Symbols.Contains(letra))
+				{
+					encrypted += "-";
+				}
 				else
 				{
-					int i = Letras.BinarySearch(letra);
-					int indexEncryption;
+					int i = Letras.IndexOf(letra);
+					int indexEncryption = 0;
 
-					if (i < 0)
+					if (i + Aleatorio() < 0)
 					{
-						indexEncryption = i * -1;
+						indexEncryption = i * -1 + Aleatorio();
 					}
 					else
 					{
-						if (i + i > Letras.Count)
+						if (i + Aleatorio() > Letras.Count)
 						{
-							indexEncryption = i + 2;
+							i = (i + Aleatorio()) - Letras.Count;
+							indexEncryption = i;
 						}
 						else
 						{
-							indexEncryption = i + i;
+							indexEncryption = i + Aleatorio();
 						}
 					}
 					char k = Letras[indexEncryption];
-					encrypted += k;
+					encrypted += k + Convert.ToString(i);
 				}
 			}
 			return encrypted;
