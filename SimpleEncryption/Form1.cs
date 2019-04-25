@@ -16,5 +16,16 @@ namespace SimpleEncryption
 		{
 			InitializeComponent();
 		}
+
+		private void textBox1_TextChanged(object sender, EventArgs e)
+		{
+
+		}
+
+		private void Button1_Click(object sender, EventArgs e)
+		{
+			string text = textBox1.Text;
+			textBox2.Text = MessageEncryption.Encryption(text);
+		}
 	}
 }
