@@ -17,7 +17,7 @@ namespace SimpleEncryption
 
 			IList<char> Symbols = new List<char>{ ',', '.', '[', ']', '{', '}', '(', ')', ';', '?' };
 
-			int Aleatorio()
+			int Aleatorio() //
 			{
 				Random z = new Random();
 				return z.Next(3, 12);
