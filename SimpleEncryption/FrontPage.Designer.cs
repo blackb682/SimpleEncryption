@@ -1,6 +1,6 @@
 ﻿namespace SimpleEncryption
 {
-	partial class Form1
+	partial class FrontPage
 	{
 		/// <summary>
 		/// Variável de designer necessária.
@@ -94,7 +94,7 @@
 			this.label2.Text = "Text encrypted:";
 			this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
 			// 
-			// Form1
+			// FrontPage
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -104,7 +104,7 @@
 			this.Controls.Add(this.textBox2);
 			this.Controls.Add(this.button1);
 			this.Controls.Add(this.textBox1);
-			this.Name = "Form1";
+			this.Name = "FrontPage";
 			this.Text = "Message Encryption";
 			this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
 			this.ResumeLayout(false);
