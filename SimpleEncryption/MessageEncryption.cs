@@ -15,12 +15,12 @@ namespace SimpleEncryption
 												'á', 'â', 'ã', 'à', 'é', 'ê', 'í', 'ó', 'õ', 'ô', 'ú', 'ü', 'ç',
 												'Á', 'Â', 'Ã', 'À', 'É', 'Ê', 'Í', 'Ó', 'Õ', 'Ô', 'Ú', 'Ü', 'Ç'};
 
-			IList<char> Symbols = new List<char>{ ',', '.', '[', ']', '{', '}' };
+			IList<char> Symbols = new List<char>{ ',', '.', '[', ']', '{', '}', '(', ')', ';', '?' };
 
 			int Aleatorio()
 			{
 				Random z = new Random();
-				return z.Next(1, 10);
+				return z.Next(3, 12);
 			}
 
 			char[] message = x.ToCharArray();
@@ -49,7 +49,7 @@ namespace SimpleEncryption
 					{
 						if (i + Aleatorio() > Letras.Count)
 						{
-							i = (i + Aleatorio()) - Letras.Count;
+							i = i + Aleatorio() - Letras.Count;
 							indexEncryption = i;
 						}
 						else
@@ -58,7 +58,7 @@ namespace SimpleEncryption
 						}
 					}
 					char k = Letras[indexEncryption];
-					encrypted += k + Convert.ToString(i);
+					encrypted += k + Convert.ToString((i + Aleatorio()).ToString("00"));
 				}
 			}
 			return encrypted;
